@@ -1,0 +1,7 @@
+create .env file:
+ORACLE_USER= ORACLE_ user_name
+ORACLE_PASSWORD=ORACLE_PASSWORD
+ORACLE_HOST=Oracle_host
+ORACLE_PORT=Oracle_port
+ORACLE_SID=Oracle_sid
+GEMINI_API_KEY=API_KEY
