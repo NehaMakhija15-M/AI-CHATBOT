@@ -1,0 +1,8 @@
+streamlit
+openai
+python-dotenv
+oracledb
+matplotlib
+google.generativeai
+dotenv
+ 

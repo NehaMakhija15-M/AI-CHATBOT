@@ -1,0 +1,126 @@
+2025-06-26 16:26:20,644 INFO Classifying intent for text: how can i help you
+2025-06-26 16:26:21,494 INFO Classified intent: query
+2025-06-26 16:26:21,494 INFO Generating SQL for user query: how can i help you
+2025-06-26 16:26:24,176 INFO Generated SQL: ```sql
+SELECT
+    tsd.SITE_NAME,
+    tbd.BILL_MONTH,
+    tbd.SEARCH_MONTH,
+    tbd.LEASE_AMOUNT
+FROM
+    TXN_SITE_DETAILS tsd
+JOIN
+    TXN_BASE_LEASE_RATE tbd ON tsd.SITERRA_SITE_ID = tbd.SITERRA_SITE_ID
+WHERE
+    tsd.COUNTRY_ID = 'IN'  -- Replace 'IN' with the desired country ID
+    AND tbd.BILL_MONTH = '2024-01'; -- Replace '2024-01' with the desired bill month
+
+```
+2025-06-26 16:26:47,289 INFO Classifying intent for text: how can i help you?
+2025-06-26 16:26:47,893 INFO Classified intent: greeting
+2025-06-26 16:26:47,893 INFO Generating greeting reply for: how can i help you?
+2025-06-26 16:26:49,613 INFO Generated greeting reply: Oh, that's so kind of you to ask!  I'm all set for now, thanks.  Is there anything I can help *you* with today?  I'm happy to answer questions, search for information, or even help you brainstorm ideas.  Let me know what's on your mind!
+2025-06-26 16:38:40,924 INFO Classifying intent for text: how can i help you
+2025-06-26 16:38:41,847 INFO Classified intent: query
+2025-06-26 16:38:41,849 INFO Generating SQL for user query: how can i help you
+2025-06-26 16:38:44,683 INFO Generated SQL: ```sql
+SELECT
+    t1.INVOICE_ID,
+    t1.SITERRA_SITE_ID,
+    t1.SITE_NAME,
+    t1.INVOICE_START_DATE,
+    t1.INVOICE_END_DATE,
+    t1.AMOUNT_ELECTRICITY,
+    t1.AMOUNT_NONENERGY,
+    t1.AMOUNT_DIESEL,
+    t1.AMOUNT_MANAGED,
+    t1.AMOUNT_MAINTAINED,
+    t2.COUNTRY_NAME
+FROM
+    TXN_SITE_INVOICE_DETAILS t1
+JOIN
+    TXN_SITE_DETAILS t2 ON t1.COUNTRY_ID = t2.COUNTRY_ID AND t1.SITERRA_SITE_ID = t2.SITERRA_SITE_ID;
+```
+2025-06-26 16:39:09,868 INFO Classifying intent for text: how can i help you
+2025-06-26 16:39:10,619 INFO Classified intent: query
+2025-06-26 16:39:10,621 INFO Generating SQL for user query: how can i help you
+2025-06-26 16:39:12,305 INFO Generated SQL: ```sql
+SELECT
+    *
+FROM
+    TXN_SITE_INVOICE_DETAILS;
+```
+2025-06-26 16:47:56,598 INFO Classifying intent for text: Hi 
+2025-06-26 16:47:58,603 INFO Classified intent: greeting
+2025-06-26 16:47:58,604 INFO Generating greeting reply for: Hi 
+2025-06-26 16:47:58,945 ERROR Error in generate_greeting_reply: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 3
+}
+]
+Traceback (most recent call last):
+  File "C:\Users\neha.makhija\Desktop\Final Chatbot\services\gemini.py", line 94, in generate_greeting_reply
+    response = model.generate_content(prompt)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\generativeai\generative_models.py", line 331, in generate_content
+    response = self._client.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\ai\generativelanguage_v1beta\services\generative_service\client.py", line 835, in generate_content
+    response = rpc(
+               ^^^^
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\api_core\gapic_v1\method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\api_core\retry\retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\api_core\retry\retry_base.py", line 214, in _retry_error_helper
+    raise final_exc from source_exc
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\api_core\timeout.py", line 130, in func_with_timeout
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\neha.makhija\AppData\Roaming\Python\Python312\site-packages\google\api_core\grpc_helpers.py", line 78, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. [violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-1.5-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 50
+}
+, links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, retry_delay {
+  seconds: 3
+}
+]
