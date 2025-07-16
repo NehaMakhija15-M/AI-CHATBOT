@@ -3,6 +3,8 @@ import numpy as np
 import plotly.express as px
 from services.gemini import generate_explanation
 
+#different charts
+
 def show_visual(df):
     if df.shape[1] >= 1:
         label_col = df.columns[0]
