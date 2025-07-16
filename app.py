@@ -4,7 +4,7 @@ from services.db import run_query
 from services.gemini import generate_sql, classify_intent, generate_greeting_reply
 from services.visual import show_visual
 import re
-
+#robo-icon 
 st.title("Natural Language to Oracle SQL")
 
 user_query = st.text_input("Ask your question (e.g. How many invoices this month?)")
