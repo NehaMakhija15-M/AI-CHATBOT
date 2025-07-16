@@ -124,3 +124,43 @@ google.api_core.exceptions.ResourceExhausted: 429 You exceeded your current quot
   seconds: 3
 }
 ]
+2025-07-16 21:08:48,383 INFO Classifying intent for text: i want to show the count of invoice with their month
+2025-07-16 21:08:49,508 INFO Classified intent: query
+2025-07-16 21:08:49,512 INFO Generating SQL for user query: i want to show the count of invoice with their month
+2025-07-16 21:08:51,952 INFO Generated SQL: ```sql
+SELECT BILL_MONTH, COUNT(*) AS INVOICE_COUNT
+FROM TXN_SITE_INVOICE_DETAILS
+GROUP BY BILL_MONTH;
+```
+2025-07-16 21:10:03,458 INFO Classifying intent for text: i want to show the count of invoice with their month in pie chart
+2025-07-16 21:10:04,013 INFO Classified intent: query
+2025-07-16 21:10:04,017 INFO Generating SQL for user query: i want to show the count of invoice with their month in pie chart
+2025-07-16 21:10:09,124 INFO Generated SQL: ```sql
+SELECT TO_CHAR(INVOICE_START_DATE, 'YYYY-MM') AS InvoiceMonth, COUNT(*) AS InvoiceCount
+FROM TXN_SITE_INVOICE_DETAILS
+GROUP BY TO_CHAR(INVOICE_START_DATE, 'YYYY-MM')
+ORDER BY TO_CHAR(INVOICE_START_DATE, 'YYYY-MM');
+```
+2025-07-16 21:10:19,479 INFO Classifying intent for text: i want to show the count of invoice with their month in line chart
+2025-07-16 21:10:20,028 INFO Classified intent: query
+2025-07-16 21:10:20,033 INFO Generating SQL for user query: i want to show the count of invoice with their month in line chart
+2025-07-16 21:10:22,561 INFO Generated SQL: ```sql
+SELECT
+    TO_CHAR(INVOICE_START_DATE, 'YYYY-MM') AS invoice_month,
+    COUNT(*) AS invoice_count
+FROM
+    TXN_SITE_INVOICE_DETAILS
+GROUP BY
+    invoice_month
+ORDER BY
+    invoice_month;
+```
+2025-07-16 21:13:13,334 INFO Classifying intent for text: i want to show the count of invoice with their month IN LINE CHART
+2025-07-16 21:13:17,176 INFO Classified intent: query
+2025-07-16 21:13:17,180 INFO Generating SQL for user query: i want to show the count of invoice with their month IN LINE CHART
+2025-07-16 21:13:18,860 INFO Generated SQL: ```sql
+SELECT BILL_MONTH, COUNT(*) AS invoice_count
+FROM TXN_SITE_INVOICE_DETAILS
+GROUP BY BILL_MONTH
+ORDER BY BILL_MONTH;
+```
